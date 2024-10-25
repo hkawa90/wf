@@ -29,7 +29,7 @@ jobs:
           config: ${{ github.workspace }}/config.yaml
 
       - name: use-yaml-file
-        run: find . -name "*.html" -print | xargs sed -i s@href=\"/${{ steps.read_action_js.outputs['note'] }}@href=\"/${{ steps.read_action_js.outputs['note'] }}/${{ github.event.repository.name }}@
+        run: find . -name "*.html" -print | xargs sed -i s@href=\"/${{ steps.read_action_js.outputs['note'] }}@href=\"/${{ github.event.repository.name }}/${{ steps.read_action_js.outputs['note'] }}@
 #        run: |
 #          echo note: ${{ steps.read_action_js.outputs['note'] }}
 #          echo vault_repository: ${{ steps.read_action_js.outputs['vault_repository'] }}
