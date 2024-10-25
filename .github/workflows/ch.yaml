@@ -22,3 +22,7 @@ jobs:
     steps:
       - name: Checkout your repository using git
         uses: actions/checkout@v4
+      - name: Build
+        run: find . -name "*.html" -print | xargs sed -i s/href=\"\/notes/href=\"hoge\/notes/
+      - name: bbb
+        run: cat index.html
