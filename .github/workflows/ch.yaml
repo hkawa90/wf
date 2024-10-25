@@ -29,10 +29,11 @@ jobs:
           config: ${{ github.workspace }}/config.yaml
 
       - name: use-yaml-file
-        run: |
-          echo note: ${{ steps.read_action_js.outputs['note'] }}
-          echo vault_repository: ${{ steps.read_action_js.outputs['vault_repository'] }}
+        run: find . -name "*.html" -print | xargs sed -i s@href=\"/${{ steps.read_action_js.outputs['note'] }}@href=\"/${{ steps.read_action_js.outputs['note'] }}/${{ github.event.repository.name }}@
+#        run: |
+#          echo note: ${{ steps.read_action_js.outputs['note'] }}
+#          echo vault_repository: ${{ steps.read_action_js.outputs['vault_repository'] }}
 #      - name: Build
 #        run: find . -name "*.html" -print | xargs sed -i s/href=\"\/notes/href=\"hoge\/notes/
-#      - name: bbb
-#        run: cat index.html
+      - name: bbb
+        run: cat index.html
